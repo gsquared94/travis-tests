@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 set -e -o pipefail
 
 if git diff --name-only "$TRAVIS_BRANCH"...HEAD | grep -v '^foo/'; then
