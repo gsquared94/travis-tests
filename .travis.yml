@@ -15,7 +15,7 @@ _integration_test: &integration_test
   language: minimal
   before_install:
     - echo running pretest
-    - git diff --name-only "$TRAVIS_BRANCH"...HEAD | grep -v '^foo/' || { echo Skipping integration tests && travis_terminate 0 }
+    - if [ -z "$(git diff --name-only "$TRAVIS_BRANCH"...HEAD | grep -v '^foo/')" ]; then echo Skipping integration tests && travis_terminate 0 fi
 
 jobs:
   include:
