@@ -1,0 +1,25 @@
+dist: xenial
+
+language: go
+go: "1.14.x"
+
+git:
+  submodules: false
+
+branches:
+  only:
+    - master
+
+_integration_test: &integration_test
+  os: linux
+  language: minimal
+  before_install:
+    - echo running pretest
+    - echo $(git diff --name-only --diff-filter=AM $TRAVIS_BRANCH...HEAD)
+
+jobs:
+  include:
+    - name: "test"
+      <<: *integration_test
+      script:
+        - echo Running test
