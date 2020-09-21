@@ -13,7 +13,7 @@ branches:
 _integration_test: &integration_test
   os: linux
   language: minimal
-  before_install: ./check-skip-integration.sh
+  before_script: ./check-skip-integration.sh
 
 jobs:
   include:
