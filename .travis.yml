@@ -13,7 +13,9 @@ branches:
 _integration_test: &integration_test
   os: linux
   language: minimal
-  before_script: ./check-skip-integration.sh
+  before_install:
+    - echo running pretest
+    - bash ./check-skip-integration.sh
 
 jobs:
   include:
