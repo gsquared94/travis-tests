@@ -15,7 +15,7 @@ _integration_test: &integration_test
   language: minimal
   before_install:
     - echo running pretest
-    - echo $(git diff --name-only --diff-filter=AM HEAD...$TRAVIS_BRANCH)
+    - echo $(git diff --name-only --diff-filter=AM $TRAVIS_BRANCH...HEAD)
 
 jobs:
   include:
