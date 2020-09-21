@@ -15,7 +15,7 @@ _integration_test: &integration_test
   language: minimal
   before_install:
     - echo running pretest
-    - ./check-skip-integration.sh
+    - check-skip-integration.sh
 
 jobs:
   include:
