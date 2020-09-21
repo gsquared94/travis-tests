@@ -2,9 +2,8 @@
 
 set -e -o pipefail
 
-if git diff --name-only "$TRAVIS_BRANCH"...HEAD | grep -v '^foo/'; then
-  return 0
+reqd=$(git diff --name-only "$TRAVIS_BRANCH"...HEAD | grep -v '^foo/')
+if [ -z "$reqd" ]; then
+  echo "Skipping integration tests since only docs changed"
+  travis_terminate 0
 fi
-
-echo "Skipping integration tests since only docs changed"
-travis_terminate 0
